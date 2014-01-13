@@ -1,0 +1,29 @@
+{
+  "name": "imogen",
+  "colorCount":"6",
+  "status": {
+    "500": {
+      "code": 500,
+      "message": "This is embarassing. Something went wrong!"
+    },
+    "404": {
+      "code":404,
+      "message":"Nothing found by that identifier. Life is hard."
+    },
+    "403": {
+      "code": 403,
+      "message": "Not allowed. You can't always get what you want."
+    },
+    "400": {
+      "code":400,
+      "message":"Imogen doesn't understand what you mean. Speak slowly."
+    }
+  },
+  "quotes": [
+    "Today everything exists to end in a photograph.",
+    "There are no bad pictures; that's just how your face looks sometimes.",
+    " There is no such thing as inaccuracy in a photograph. All photographs are accurate. None of them is the truth.",
+    "In order to remember, we have to access and interact with the photos, rather than just amass them.",
+    "Do you even have to take photographs anymore to call yourself a photographer?"
+  ]
+}
