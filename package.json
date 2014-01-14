@@ -1,12 +1,12 @@
 {
-  "name": "imogen",
+  "name": "Aislin",
   "version": "0.0.1",
   "private": true,
   "author": "Joshua Beckman <@jbckmn>",
   "main": "./app.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:jbckmn/imogen.git"
+    "url": "git@github.com:jbckmn/aislin.git"
   },
   "engine": [
     "node >=0.10.0"

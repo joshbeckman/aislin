@@ -8,7 +8,7 @@ var fs = require('fs')
 
 module.exports = function (app, ensureAuth) {
   app.get('/admin', function(req, res) {
-    res.render('index', { title: 'Imogen',
+    res.render('index', { title: config.name,
                           req: req,
                           config: config });
   });

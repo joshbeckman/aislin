@@ -8,7 +8,7 @@ var fs = require('fs')
 
 module.exports = function (app, ensureAuth) {
   app.get('/', function(req, res) {
-    res.render('index', { title: 'Imogen',
+    res.render('index', { title: config.name,
                           req: req,
                           quote: config.quotes[Math.floor(Math.random() * config.quotes.length)] });
   });

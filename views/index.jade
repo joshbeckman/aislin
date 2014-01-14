@@ -1,7 +1,89 @@
 extends layout
 
 block content
-  h1
-    a(href="/")= title
-  p #{title} quotes:
-  blockquote #{quote} 
+  .pure-g-r
+    .pure-u-1.lede
+      h1.title.text-center
+        a(href="/")= title
+      .text-center
+        p.leader.muted The API to get the most out of your images.
+        br
+        span.uppers
+          a(href="#table") Check it out
+        p.muted.quote.pure-hidden-phone #{quote} 
+    #table.pure-u-1
+      .pure-visible-phone.pad-s-1
+        h3 Working Examples
+        ul.no-dot-list
+          li
+            a(href="/id?i=#{req.host}/images/cat.jpg") /id?i=http://#{req.host}/images/cat.jpg
+          li
+            a(href="/id?i=#{req.host}/images/cat.jpg&colorCount=false") /id?i=http://#{req.host}/images/cat.jpg&colorCount=false
+          li
+            a(href="/cc?i=#{req.host}/images/cat.jpg") /cc?i=http://#{req.host}/images/cat.jpg
+          li
+            a(href="/id?i=#{req.host}/images/cat.jpg&colorCount=10") /id?i=http://#{req.host}/images/cat.jpg&colorCount=10
+      table.pure-table.pure-table-horizontal.pure-hidden-phone
+        caption <a href="/">AISLIN</a> API ROUTES
+        thead
+          tr
+            th Method
+            th Route
+            th Query Variables
+            th Response
+            th Working Example
+        tr#id
+          td 
+            code(style="color:forestgreen;") get 
+          td 
+            code /id
+          td 
+            h3 <code>i</code> 
+            ul.no-dot-list
+              li <strong class="muted">Desc:</strong> Image url
+              li <strong class="muted">Type:</strong> STRING
+              li <strong class="emph">Required</strong>
+            h3 <code>colorCount</code> 
+            ul.no-dot-list
+              li <strong class="muted">Desc:</strong> Count of color data to return
+              li <strong class="muted">Type:</strong> INTEGER || 'false'
+              li <strong class="muted">Default:</strong> 6
+              li <strong class="emph">Optional</strong>
+          td JSON Object, with top-level keys of:
+            ul.no-dot-list 
+              li <code>identity</code> <small class="muted emph">(object)</small>
+              li <code>colors</code> <small class="muted emph">(array)</small>
+              li <code>query</code> <small class="muted emph">(object)</small>
+          td
+            ul.no-dot-list
+              li
+                a(href="/id?i=#{req.host}/images/cat.jpg") /id?i=http://#{req.host}/images/cat.jpg
+              li
+                a(href="/id?i=#{req.host}/images/cat.jpg&colorCount=false") /id?i=http://#{req.host}/images/cat.jpg&colorCount=false
+        tr#id
+          td 
+            code(style="color:forestgreen;") get 
+          td 
+            code /cc
+          td 
+            h3 <code>i</code> 
+            ul.no-dot-list
+              li <strong class="muted">Desc:</strong> Image url
+              li <strong class="muted">Type:</strong> String
+              li <strong class="emph">Required</strong>
+            h3 <code>colorCount</code> 
+            ul.no-dot-list
+              li <strong class="muted">Desc:</strong> Count of color data to return
+              li <strong class="muted">Type:</strong> Integer || 'false'
+              li <strong class="muted">Default:</strong> 6
+              li <strong class="emph">Optional</strong>
+          td JSON Object, with top-level keys of:
+            ul.no-dot-list 
+              li <code>colors</code> <small class="muted emph">(array)</small>
+              li <code>query</code> <small class="muted emph">(object)</small>
+          td
+            ul.no-dot-list
+              li
+                a(href="/cc?i=#{req.host}/images/cat.jpg") /cc?i=http://#{req.host}/images/cat.jpg
+              li
+                a(href="/id?i=#{req.host}/images/cat.jpg&colorCount=10") /id?i=http://#{req.host}/images/cat.jpg&colorCount=10
