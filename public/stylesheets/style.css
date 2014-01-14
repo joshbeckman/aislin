@@ -16,6 +16,7 @@ a {
 }
 a:hover{
   border-bottom: 1px solid #3b92b1;
+  cursor: pointer;
 }
 code {
   background-color:#102531;
@@ -73,4 +74,5 @@ code {
 .pure-table caption {
   color: #efefef;
   font-style: normal;
+  font-size: 1.5em;
 }
