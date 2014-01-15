@@ -9,7 +9,7 @@ block content
         p.leader Wake up to all the data in your images.
           br
           br
-          small.thin.muted The best image analysis API out there  
+          small.thin.muted The best image analysis API out there.  
         span.uppers
           a(data-scroll-to="docs").scroller.pad-s-1 Docs
           a(data-scroll-to="demo").scroller.pad-s-1 Demo
@@ -18,17 +18,17 @@ block content
           br
           | made with love by <a href="http://www.bckmn.com" target="_blank">jbckmn</a>
     #docs.pure-u-1
+      br
       .pure-hidden-desktop.pure-hidden-tablet.pad-s-1
-        h3 Working Examples
-        ul.no-dot-list
-          li
-            a(href="/id?i=http://#{req.host}/images/cat.jpg") /id?i=http://#{req.host}/images/cat.jpg
-          li
-            a(href="/id?i=http://#{req.host}/images/cat.jpg&colorCount=false") /id?i=http://#{req.host}/images/cat.jpg&colorCount=false
-          li
-            a(href="/cc?i=http://#{req.host}/images/cat.jpg") /cc?i=http://#{req.host}/images/cat.jpg
-          li
-            a(href="/id?i=http://#{req.host}/images/cat.jpg&colorCount=10") /id?i=http://#{req.host}/images/cat.jpg&colorCount=10
+        h2.text-center <a data-scroll-to="lede" class="scroller">AISLIN</a> API ROUTES
+        p
+          a(href="/id?i=http://#{req.host}/images/cat.jpg") /id?i=http://#{req.host}/images/cat.jpg
+        p
+          a(href="/id?i=http://#{req.host}/images/cat.jpg&colorCount=false") /id?i=http://#{req.host}/images/cat.jpg&colorCount=false
+        p
+          a(href="/cc?i=http://#{req.host}/images/cat.jpg") /cc?i=http://#{req.host}/images/cat.jpg
+        p
+          a(href="/id?i=http://#{req.host}/images/cat.jpg&colorCount=10") /id?i=http://#{req.host}/images/cat.jpg&colorCount=10
       table.pure-table.pure-table-horizontal.pure-hidden-phone
         caption <a data-scroll-to="lede" class="scroller">AISLIN</a> API ROUTES
         thead
@@ -94,6 +94,25 @@ block content
               li
                 a(href="/id?i=http://#{req.host}/images/cat.jpg&colorCount=10") /id?i=http://#{req.host}/images/cat.jpg&colorCount=10
     #demo.pure-u-1
-      br
-      h2.text-center.uppers <a data-scroll-to="lede" class="scroller">AISLIN</a> Demo
-      p.text-center.muted Coming soon
+      .pad-s-1
+        br
+        h2.text-center.uppers <a data-scroll-to="lede" class="scroller">AISLIN</a> Demo
+        label 
+          span.muted Input the url of an image <em>(default provided below)</em>
+          input#demo-input(type="url", value="http://#{req.host}/images/girl.jpg")
+        button#demo-button Analyze
+        .pure-g-r
+          .pure-u-1-4.pure-hidden-phone
+            p Try:
+              br
+              button(data-demo-url="http://#{req.host}/images/cat.jpg").demo-url Cat
+              br
+              button(data-demo-url="http://#{req.host}/images/fang.jpg").demo-url Fang
+              br
+              button(data-demo-url="http://#{req.host}/images/sky.jpg").demo-url Sky
+              br
+              button(data-demo-url="http://#{req.host}/images/girl.jpg").demo-url Girl
+          .pure-u-1-2
+            #demo-resp.text-center
+            img#demo-image(src="http://#{req.host}/images/girl.jpg")
+
