@@ -1,9 +1,10 @@
+@import url("pure-min.css");
 body {
   font-size: 15px ;
   line-height: 1.4em;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Raleway', Helvetica, sans-serif;
   font-weight: 400;
-  background: #163241 ;
+  background: #163241;
   color: #efefef;
 }
 h1, h2, h3, h4, h5{
@@ -32,6 +33,9 @@ code {
 .uppers{
   text-transform: uppercase;
 }
+.thin{
+  font-weight: 100;
+}
 .text-center{
   text-align: center;
 }
@@ -40,19 +44,20 @@ code {
 }
 .container{
   max-width: 1000px;
+  margin:0 auto;
 }
 .pad-s-1{
   padding-left: 1em;
   padding-right: 1em;
 }
-.lede{
+#lede, #docs, #demo{
   min-height: 100vh;
 }
 .title{
   text-transform: uppercase;
   margin: 0px;
-  padding: 3em 0 1em 0;
-  font-size: 40px;
+  padding: 2em 0 1em 0;
+  font-size: 50px;
   font-weight: 100;
 }
 .leader{
@@ -63,9 +68,9 @@ code {
   font-weight: 100;
   position: absolute;
   bottom: 0px;
-  left: 20%;
+  left:20%;
   width: 60%;
-  font-size: 13px;
+  font-size: 14px;
 }
 .pure-table{
   margin:0 auto;
@@ -75,4 +80,5 @@ code {
   color: #efefef;
   font-style: normal;
   font-size: 1.5em;
+  font-family: 'Raleway';
 }

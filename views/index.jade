@@ -1,32 +1,36 @@
 extends layout
 
 block content
-  .pure-g-r
-    .pure-u-1.lede
+  .pure-g-r.container
+    #lede.pure-u-1
       h1.title.text-center
         a(href="/")= title
       .text-center
-        p.leader.muted The API to get the most out of your images.
-        br
+        p.leader Wake up to all the data in your images.
+          br
+          br
+          small.thin.muted The best image analysis API out there  
         span.uppers
-          a(data-scroll-to="docs").scroller Docs
-          |  – 
-          a(data-scroll-to="demo").scroller Demo
-        p.muted.quote.pure-hidden-phone #{quote} 
+          a(data-scroll-to="docs").scroller.pad-s-1 Docs
+          a(data-scroll-to="demo").scroller.pad-s-1 Demo
+        p.muted.quote
+          span.pure-hidden-phone #{quote} 
+          br
+          | made with love by <a href="http://www.bckmn.com" target="_blank">jbckmn</a>
     #docs.pure-u-1
       .pure-hidden-desktop.pure-hidden-tablet.pad-s-1
         h3 Working Examples
         ul.no-dot-list
           li
-            a(href="/id?i=#{req.host}/images/cat.jpg") /id?i=http://#{req.host}/images/cat.jpg
+            a(href="/id?i=http://#{req.host}/images/cat.jpg") /id?i=http://#{req.host}/images/cat.jpg
           li
-            a(href="/id?i=#{req.host}/images/cat.jpg&colorCount=false") /id?i=http://#{req.host}/images/cat.jpg&colorCount=false
+            a(href="/id?i=http://#{req.host}/images/cat.jpg&colorCount=false") /id?i=http://#{req.host}/images/cat.jpg&colorCount=false
           li
-            a(href="/cc?i=#{req.host}/images/cat.jpg") /cc?i=http://#{req.host}/images/cat.jpg
+            a(href="/cc?i=http://#{req.host}/images/cat.jpg") /cc?i=http://#{req.host}/images/cat.jpg
           li
-            a(href="/id?i=#{req.host}/images/cat.jpg&colorCount=10") /id?i=http://#{req.host}/images/cat.jpg&colorCount=10
+            a(href="/id?i=http://#{req.host}/images/cat.jpg&colorCount=10") /id?i=http://#{req.host}/images/cat.jpg&colorCount=10
       table.pure-table.pure-table-horizontal.pure-hidden-phone
-        caption <a href="/">AISLIN</a> API ROUTES
+        caption <a data-scroll-to="lede" class="scroller">AISLIN</a> API ROUTES
         thead
           tr
             th Method
@@ -59,9 +63,9 @@ block content
           td
             ul.no-dot-list
               li
-                a(href="/id?i=#{req.host}/images/cat.jpg") /id?i=http://#{req.host}/images/cat.jpg
+                a(href="/id?i=http://#{req.host}/images/cat.jpg") /id?i=http://#{req.host}/images/cat.jpg
               li
-                a(href="/id?i=#{req.host}/images/cat.jpg&colorCount=false") /id?i=http://#{req.host}/images/cat.jpg&colorCount=false
+                a(href="/id?i=http://#{req.host}/images/cat.jpg&colorCount=false") /id?i=http://#{req.host}/images/cat.jpg&colorCount=false
         tr#id
           td 
             code(style="color:forestgreen;") get 
@@ -86,6 +90,10 @@ block content
           td
             ul.no-dot-list
               li
-                a(href="/cc?i=#{req.host}/images/cat.jpg") /cc?i=http://#{req.host}/images/cat.jpg
+                a(href="/cc?i=http://#{req.host}/images/cat.jpg") /cc?i=http://#{req.host}/images/cat.jpg
               li
-                a(href="/id?i=#{req.host}/images/cat.jpg&colorCount=10") /id?i=http://#{req.host}/images/cat.jpg&colorCount=10
+                a(href="/id?i=http://#{req.host}/images/cat.jpg&colorCount=10") /id?i=http://#{req.host}/images/cat.jpg&colorCount=10
+    #demo.pure-u-1
+      br
+      h2.text-center.uppers <a data-scroll-to="lede" class="scroller">AISLIN</a> Demo
+      p.text-center.muted Coming soon

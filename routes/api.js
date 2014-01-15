@@ -41,7 +41,6 @@ module.exports = function (app, ensureAuth) {
         response.identity = data;
         delete response.identity["Base filename"];
         delete response.identity.path;
-        delete response.identity.Artifacts.filename;
         delete response.identity["Elapsed time"];
         delete response.identity["User time"];
         if (req.query.colorCount == 'false' || req.query.colorCount == '0') {
