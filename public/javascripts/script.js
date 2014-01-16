@@ -57,7 +57,7 @@
     i = 0;
   function makeDemoUrlListen (url) {
     return function(){
-      document.getElementById('demo-input').value = url;
+      document.getElementById('demo-input').value = document.getElementById('demo-image').src = url;
     };
   }
   for (; i < leng; i++) {
