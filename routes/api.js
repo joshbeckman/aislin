@@ -7,16 +7,11 @@ var fs = require('fs')
     , request = require('request')
     , gm = require('gm')
     , imageMagick = gm.subClass({ imageMagick: true })
-    // , exifImage = require('exif').ExifImage
-    , Canvas = require('canvas')
-    , canvas = new Canvas
-    , ctx = canvas.getContext('2d')
-    , palette = require('palette')
     , config = JSON.parse(fs.readFileSync('./config.json'))
-    , moment = require('moment')
     , newTime
     , response
-    , img;
+    , Canvas = require('canvas')
+    , palette = require('palette');
 
 module.exports = function (app, ensureAuth) {
 
@@ -75,6 +70,9 @@ module.exports = function (app, ensureAuth) {
       if (req.query.colorCount == 'false' || req.query.colorCount == '0') {
         finish();
       } else {
+        var img
+          , canvas = new Canvas
+          , ctx = canvas.getContext('2d');
         // Start in on the colors
         img = new Canvas.Image;
         img.onload = function(){
