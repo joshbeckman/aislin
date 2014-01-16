@@ -43,40 +43,16 @@ module.exports = function (app, ensureAuth) {
         delete response.identity.path;
         delete response.identity["Elapsed time"];
         delete response.identity["User time"];
-        if (req.query.colorCount == 'false' || req.query.colorCount == '0') {
-          finish();
-        } else {
-          // Start in on the colors
-          img = new Canvas.Image;
-          img.onload = function(){
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img, 0, 0);
-            var colors = palette(canvas, (parseInt((req.query.colorCount || config.colorCount), 10))), 
-              length = colors.length, 
-              i = 0;
-            response.colors = [];
-            colors.forEach(function(color){
-              response.colors.push({
-                r: color[0],
-                g: color[1],
-                b: color[2],
-                hex: '#' + (color[0] << 16 | color[1] << 8 | color[2]).toString(16)
-              });
-              i++;
-              if (i == length) {
-                finish();
-              }
-            });
-          };
-          img.src = buffer;
-        }
+        finish();
         function finish() {
           response.colors = response.colors || [];
           response.query = {
             "url": req.query.i,
-            "color count": req.query.colorCount || config.colorCount,
-            "elapsed time": (new Date() - newTime)
+            "elapsed time": (new Date() - newTime),
+            "_links": {
+              "_self": ("/id?i=" + req.query.i),
+              "color count": ("/cc?i=" + req.query.i)
+            }
           };
           res.jsonp(response);
         }
@@ -129,7 +105,11 @@ module.exports = function (app, ensureAuth) {
         response.query = {
           "url": req.query.i,
           "color count": req.query.colorCount || config.colorCount,
-          "elapsed time": (new Date() - newTime)
+          "elapsed time": (new Date() - newTime),
+          "_links": {
+            "_self": ("/cc?i=" + req.query.i + '&colorCount=' + (req.query.colorCount || config.colorCount)),
+            "identity": ("/id?i=" + req.query.i)
+          }
         };
         res.jsonp(response);
       }

@@ -24,22 +24,37 @@
           btn = document.getElementById('demo-button'),
           img = document.getElementById('demo-image'),
           elem = document.getElementById('demo-resp'),
-          url = window.location.origin + '/id?i=' + input.value;
+          cElem = document.getElementById('demo-colors'),
+          idUrl = window.location.origin + '/id?i=' + input.value,
+          ccUrl = window.location.origin + '/cc?i=' + input.value;
       img.src = input.value;
+      cElem.innerHTML = null;
       elem.innerHTML = 'Running...';
       btn.innerHTML = 'Running...';
-      request(url, function(err,data,xhr){
-        handleDemoResponse(JSON.parse(data), elem);
+      request(idUrl, function(err,data,xhr){
+        handleIdResponse(JSON.parse(data), elem);
+      });
+      request(ccUrl, function(err,data,xhr){
+        handleCcResponse(JSON.parse(data), cElem);
         btn.innerHTML = 'Analyze Colors';
-      })
+      });
     };
   }
   btn.onclick = makeDemoRun();
-  function handleDemoResponse (data, elem) {
+  function handleIdResponse (data, elem) {
+    if (data.query) {
+      elem.innerHTML = '<p>File size: <code>' + data.identity['Filesize'].toString() + '</code><br>Elapsed time: <code>' + data.query['elapsed time'].toString() + ' ms</code><br>Pixels per second: <code>' + data.identity['Pixels per second'].toString() + '</code><br>Date created: <code>' + data.identity.Properties['date:create'].toString() + '</code><br>White point: <code>' + (data.identity.Chromaticity['white point'].toString() || '[stripped]') + '</code><br><em>...etc...</em></p>';
+    } else {
+      html  = '<h3 class="error">Error:</h3>';
+      html += '<code>' + data + '</code>';
+      elem.innerHTML = html;
+    }
+  }
+  function handleCcResponse (data, elem) {
     if (data.query) {
       var length = data.colors.length,
         i = 0;
-      elem.innerHTML = '<p>File size: <code>' + data.identity['Filesize'].toString() + '</code><br>Elapsed time: <code>' + data.query['elapsed time'].toString() + ' ms</code><br>Pixels per second: <code>' + data.identity['Pixels per second'].toString() + '</code><br>Date created: <code>' + data.identity.Properties['date:create'].toString() + '</code><br>Print size: <code>' + (data.identity['Print size'].toString() || '[stripped]') + '</code><br><em>...etc...</em><br>Primary colors:</p>';
+      elem.innerHTML = 'Primary colors:<br>';
       for (; i < length; i++) {
         passColor(elem, data.colors[i].hex, (30 * i));
       }
@@ -57,7 +72,7 @@
     i = 0;
   function makeDemoUrlListen (url) {
     return function(){
-      document.getElementById('demo-input').value = document.getElementById('demo-image').src = url;
+      document.getElementById('demo-input').value = url;
     };
   }
   for (; i < leng; i++) {

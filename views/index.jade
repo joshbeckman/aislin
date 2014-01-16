@@ -49,23 +49,14 @@ block content
               li <strong class="muted">Desc:</strong> Image url
               li <strong class="muted">Type:</strong> STRING
               li <strong class="emph">Required</strong>
-            h3 <code>colorCount</code> 
-            ul.no-dot-list
-              li <strong class="muted">Desc:</strong> Count of color data to return
-              li <strong class="muted">Type:</strong> INTEGER || 'false'
-              li <strong class="muted">Default:</strong> 6
-              li <strong class="emph">Optional</strong>
           td JSON Object, with top-level keys of:
             ul.no-dot-list 
               li <code>identity</code> <small class="muted emph">(object)</small>
-              li <code>colors</code> <small class="muted emph">(array)</small>
               li <code>query</code> <small class="muted emph">(object)</small>
           td
             ul.no-dot-list
               li
                 a(href="/id?i=http://#{req.host}/images/cat.jpg") /id?i=http://#{req.host}/images/cat.jpg
-              li
-                a(href="/id?i=http://#{req.host}/images/cat.jpg&colorCount=false") /id?i=http://#{req.host}/images/cat.jpg&colorCount=false
         tr#id
           td 
             code(style="color:forestgreen;") get 
@@ -114,5 +105,6 @@ block content
               button(data-demo-url="http://#{req.host}/images/girl.jpg").demo-url Girl
           .pure-u-1-2
             #demo-resp.text-center
-            img#demo-image(src="http://#{req.host}/images/girl.jpg")
+            #demo-colors.text-center
+            img#demo-image(src="http://#{req.host}/images/favicon.png")
 
