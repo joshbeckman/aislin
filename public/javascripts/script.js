@@ -39,7 +39,7 @@
     if (data.query) {
       var length = data.colors.length,
         i = 0;
-      elem.innerHTML = '<p>File size: <code>' + data.identity['Filesize'].toString() + '</code><br>Elapsed time: <code>' + data.query['elapsed time'].toString() + ' ms</code><br>Pixels per second: <code>' + data.identity['Pixels per second'].toString() + '</code><br>Date created: <code>' + data.identity.Properties['date:create'].toString() + '</code><br>Gamma: <code>' + data.identity.Gamma.toString() + '</code><br><em>...etc...</em></p>';
+      elem.innerHTML = '<p>File size: <code>' + data.identity['Filesize'].toString() + '</code><br>Elapsed time: <code>' + data.query['elapsed time'].toString() + ' ms</code><br>Pixels per second: <code>' + data.identity['Pixels per second'].toString() + '</code><br>Date created: <code>' + data.identity.Properties['date:create'].toString() + '</code><br>Gamma: <code>' + (data.identity['Gamma'].toString() || '[stripped]') + '</code><br><em>...etc...</em></p>';
       for (; i < length; i++) {
         passColor(elem, data.colors[i].hex, (30 * i));
       }
