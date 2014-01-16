@@ -43,7 +43,7 @@
   btn.onclick = makeDemoRun();
   function handleIdResponse (data, elem) {
     if (data.query) {
-      elem.innerHTML = '<p>File size: <code>' + data.identity['Filesize'].toString() + '</code><br>Elapsed time: <code>' + data.query['elapsed time'].toString() + ' ms</code><br>Pixels per second: <code>' + data.identity['Pixels per second'].toString() + '</code><br>Date created: <code>' + data.identity.Properties['date:create'].toString() + '</code><br>White point: <code>' + (data.identity.Chromaticity['white point'].toString() || '[stripped]') + '</code><br><em>...etc...</em></p>';
+      elem.innerHTML = '<p>File size: <code>' + data.identity['Filesize'].toString() + '</code><br>Elapsed time: <code>' + data.query['elapsed time'].toString() + ' ms</code><br>Pixels per second: <code>' + data.identity['Pixels per second'].toString() + '</code><br>Date created: <code>' + data.identity.Properties['date:create'].toString() + '</code><br>Geometry: <code>' + (data.identity['Geometry'].toString() || '[stripped]') + '</code><br><em>...etc...</em></p>';
     } else {
       html  = '<h3 class="error">Error:</h3>';
       html += '<code>' + data + '</code>';
