@@ -38,7 +38,6 @@ module.exports = function (app, ensureAuth) {
           console.log('Error in identify: ', errIdent);
           res.jsonp(config.status['400']);
         }
-        console.log(data);
         response.identity = data;
         delete response.identity["Base filename"];
         delete response.identity.path;
