@@ -22,17 +22,11 @@ module.exports = function (app, ensureAuth) {
     newTime = new Date();
     response = {};
     imageMagick(req.query.i)
-    .toBuffer(function (errBuff, buffer) {
-      if (errBuff) {
-        console.log('Error in buffer: ', errBuff);
+    .identify(function (errIdent, data) {
+      if (errIdent) {
+        console.log('Error in identify: ', errIdent);
         res.jsonp(config.status['400']);
-      }
-      imageMagick(buffer)
-      .identify(function (errIdent, data) {
-        if (errIdent) {
-          console.log('Error in identify: ', errIdent);
-          res.jsonp(config.status['400']);
-        }
+      } else {
         response.identity = data;
         delete response.identity["Base filename"];
         delete response.identity.path;
@@ -51,7 +45,7 @@ module.exports = function (app, ensureAuth) {
           };
           res.jsonp(response);
         }
-      });
+      }
     });
   });
 

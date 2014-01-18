@@ -36,14 +36,27 @@
       });
       request(ccUrl, function(err,data,xhr){
         handleCcResponse(JSON.parse(data), cElem);
-        btn.innerHTML = 'Analyze Colors';
+        btn.innerHTML = 'Analyze (ID & Colors)';
       });
     };
   }
   btn.onclick = makeDemoRun();
   function handleIdResponse (data, elem) {
+    var temp;
     if (data.query) {
-      elem.innerHTML = '<p>File size: <code>' + data.identity['Filesize'].toString() + '</code><br>Elapsed time: <code>' + data.query['elapsed time'].toString() + ' ms</code><br>Pixels per second: <code>' + data.identity['Pixels per second'].toString() + '</code><br>Date created: <code>' + data.identity.Properties['date:create'].toString() + '</code><br>Geometry: <code>' + (data.identity['Geometry'].toString() || '[stripped]') + '</code><br><em>...etc...</em></p>';
+      temp = '<p>Pixels in image: <code>' + data.identity['Number pixels'].toString() + '</code><br>Elapsed time: <code>' + data.query['elapsed time'].toString() + ' ms</code><br>Date created: <code>' + data.identity.Properties['date:create'].toString() + '</code><br>Geometry: <code>' + (data.identity['Geometry'].toString() || '[stripped]') + '</code><br>';
+      if (data.identity['Properties'] && data.identity['Properties']['exif:Make'] && data.identity['Properties']['exif:Model']) {
+        temp += 'Camera make/model: <code>' + data.identity['Properties']['exif:Make'] +'/' + data.identity['Properties']['exif:Model'] + '</code><br>';
+      }
+      if (data.identity['Properties'] && data.identity['Properties']['exif:GPSLatitude']) {
+        var latTemp = data.identity['Properties']['exif:GPSLatitude'].split(', '),
+          lat = latTemp[0].split('/')[0] + '.' + latTemp[1].split('/')[0] + ' ' +data.identity['Properties']['exif:GPSLatitudeRef'],
+          lonTemp = data.identity['Properties']['exif:GPSLongitude'].split(', '),
+          lon = lonTemp[0].split('/')[0] + '.' + lonTemp[1].split('/')[0] + ' ' +data.identity['Properties']['exif:GPSLongitudeRef'];
+        temp += 'Latitude, Longitude: <code>' + lat +', ' + lon + '</code><br>';
+      }
+      temp += '<em>...etc...</em></p>';
+      elem.innerHTML = temp;
     } else {
       html  = '<h3 class="error">Error:</h3>';
       html += '<code>' + data + '</code>';
