@@ -90,7 +90,8 @@ module.exports = function (app, ensureAuth) {
               r: color[0],
               g: color[1],
               b: color[2],
-              hex: theHex
+              hex: theHex,
+              name: theName[1]
             });
             i++;
             if (i == length) {
