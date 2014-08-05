@@ -24,6 +24,7 @@ module.exports = function (app, ensureAuth) {
     if (!req.query.i) {
       res.jsonp(config.status['400']);
     }
+    newTime = new Date();
     redis.get('id_' + req.query.i, function (err, result) {
       if (err || !result){
         if(err)
@@ -31,12 +32,12 @@ module.exports = function (app, ensureAuth) {
         runnable();
       }
       else{
-        console.log('cache hit for ', req.query.i);
-        res.jsonp(JSON.parse(result));
+        response = JSON.parse(result);
+        response.query["elapsed time"] = (new Date() - newTime);
+        res.jsonp(response);
       }
     });
     function runnable(){
-      newTime = new Date();
       response = {};
       imageMagick(req.query.i)
       .identify(function (errIdent, data) {
@@ -77,6 +78,7 @@ module.exports = function (app, ensureAuth) {
     if (!req.query.i) {
       res.jsonp(config.status['400']);
     }
+    newTime = new Date();
     redis.get('cc_' + req.query.i, function (err, result) {
       if (err || !result){
         if(err)
@@ -84,12 +86,12 @@ module.exports = function (app, ensureAuth) {
         runnable();
       }
       else{
-        console.log('cache hit for ', req.query.i);
-        res.jsonp(JSON.parse(result));
+        response = JSON.parse(result);
+        response.query["elapsed time"] = (new Date() - newTime);
+        res.jsonp(response);
       }
     });
     function runnable(){
-      newTime = new Date();
       response = {};
       imageMagick(req.query.i)
       .toBuffer(function (errBuff, buffer) {

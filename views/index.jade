@@ -9,10 +9,11 @@ block content
         p.leader Wake up to all the data in your images.
           br
           br
-          small.thin.muted The best image analysis API out there.  
+          small.thin.muted The best little image analysis API out there.  
         span.uppers
-          a(data-scroll-to="docs").scroller.pad-s-1 Docs
           a(data-scroll-to="demo").scroller.pad-s-1 Demo
+          a(data-scroll-to="docs").scroller.pad-s-1 Docs
+          a(data-scroll-to="features").scroller.pad-s-1 Features
         p.muted.quote
           span.pure-hidden-phone #{quote} 
           br
@@ -37,6 +38,19 @@ block content
             #demo-resp.text-center
             #demo-colors.text-center
             img#demo-image(src="http://#{req.host}/images/favicon.png")
+    #features.pure-u-1
+      .pad-s-1
+        br
+        h2.text-center.uppers Features
+        .pure-g-r
+          .pure-u-1-2
+            p.leader All available data returned direct to you: GPS, camera, editor, date, orientation, print size, EXIF, statistics, etc.
+          .pure-u-1-2
+            p.leader Colors are returned with individual names (e.g. <code>#009DC4</code> => <code>Pacific Blue</code>), hex, and rgb data.
+          .pure-u-1-2
+            p.leader Response data is reasonably cached to optimize performance and response time.
+          .pure-u-1-2
+            p.leader JSONP supported, and all you need to pass is the URL to a publicly available image.
     #docs.pure-u-1
       br
       .pure-hidden-desktop.pure-hidden-tablet.pad-s-1
