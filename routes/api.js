@@ -32,7 +32,7 @@ module.exports = function (app, ensureAuth) {
       }
       else{
         console.log('cache hit for ', req.query.i);
-        res.jsonp(result);
+        res.jsonp(JSON.parse(result));
       }
     });
     function runnable(){
@@ -85,7 +85,7 @@ module.exports = function (app, ensureAuth) {
       }
       else{
         console.log('cache hit for ', req.query.i);
-        res.jsonp(result);
+        res.jsonp(JSON.parse(result));
       }
     });
     function runnable(){
