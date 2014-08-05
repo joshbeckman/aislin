@@ -30,9 +30,10 @@ module.exports = function (app, ensureAuth) {
           console.log(err);
         runnable();
       }
-      else
+      else{
         console.log('cache hit for ', req.query.i);
         res.jsonp(result);
+      }
     });
     function runnable(){
       newTime = new Date();
@@ -82,9 +83,10 @@ module.exports = function (app, ensureAuth) {
           console.log(err);
         runnable();
       }
-      else
+      else{
         console.log('cache hit for ', req.query.i);
         res.jsonp(result);
+      }
     });
     function runnable(){
       newTime = new Date();
