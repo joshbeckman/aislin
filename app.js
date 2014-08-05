@@ -3,8 +3,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , fs = require('fs')
-  , config = JSON.parse(fs.readFileSync('./config.json'))
-  , cachingMiddleware = require('express-view-cache');
+  , config = JSON.parse(fs.readFileSync('./config.json'));
 
 var app = express();
 
