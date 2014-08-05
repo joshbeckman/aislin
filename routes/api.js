@@ -6,7 +6,7 @@
 var fs = require('fs')
     , request = require('request')
     , gm = require('gm')
-    , ntc = require('./lib/ntc')
+    , ntc = require('../lib/ntc')
     , imageMagick = gm.subClass({ imageMagick: true })
     , config = JSON.parse(fs.readFileSync('./config.json'))
     , newTime
