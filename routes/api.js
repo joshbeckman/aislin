@@ -26,10 +26,12 @@ module.exports = function (app, ensureAuth) {
     }
     redis.get('id_' + req.query.i, function (err, result) {
       if (err || !result){
-        console.log('cache hit for ', req.query.i);
+        if(err)
+          console.log(err);
         runnable();
       }
       else
+        console.log('cache hit for ', req.query.i);
         res.jsonp(result);
     });
     function runnable(){
@@ -76,10 +78,12 @@ module.exports = function (app, ensureAuth) {
     }
     redis.get('cc_' + req.query.i, function (err, result) {
       if (err || !result){
-        console.log('cache hit for ', req.query.i);
+        if(err)
+          console.log(err);
         runnable();
       }
       else
+        console.log('cache hit for ', req.query.i);
         res.jsonp(result);
     });
     function runnable(){
