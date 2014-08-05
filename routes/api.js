@@ -84,7 +84,7 @@ module.exports = function (app, ensureAuth) {
         runnable();
       }
       else{
-        console.log('cache hit for ', req.query.i);
+        console.log('cache hit for ', req.query.i, result);
         res.jsonp(JSON.parse(result));
       }
     });
