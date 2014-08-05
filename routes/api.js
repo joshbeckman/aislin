@@ -25,8 +25,10 @@ module.exports = function (app, ensureAuth) {
       res.jsonp(config.status['400']);
     }
     redis.get('id_' + req.query.i, function (err, result) {
-      if (err || !result)
+      if (err || !result){
+        console.log('cache hit for ', req.query.i);
         runnable();
+      }
       else
         res.jsonp(result);
     });
@@ -73,8 +75,10 @@ module.exports = function (app, ensureAuth) {
       res.jsonp(config.status['400']);
     }
     redis.get('cc_' + req.query.i, function (err, result) {
-      if (err || !result)
+      if (err || !result){
+        console.log('cache hit for ', req.query.i);
         runnable();
+      }
       else
         res.jsonp(result);
     });
