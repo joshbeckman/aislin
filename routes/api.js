@@ -6,6 +6,7 @@
 var fs = require('fs')
     , request = require('request')
     , gm = require('gm')
+    , ntc = require('./lib/ntc')
     , imageMagick = gm.subClass({ imageMagick: true })
     , config = JSON.parse(fs.readFileSync('./config.json'))
     , newTime
@@ -80,14 +81,17 @@ module.exports = function (app, ensureAuth) {
           ctx.drawImage(img, 0, 0);
           var colors = palette(canvas, (parseInt((req.query.colorCount || config.colorCount), 10))), 
             length = colors.length, 
-            i = 0;
+            i = 0, theHex = '', theName = '';
           response.colors = [];
           colors.forEach(function(color){
+            theHex = '#' + (color[0] << 16 | color[1] << 8 | color[2]).toString(16);
+            theName = ntc.name(theHex);
             response.colors.push({
               r: color[0],
               g: color[1],
               b: color[2],
-              hex: '#' + (color[0] << 16 | color[1] << 8 | color[2]).toString(16)
+              hex: theHex,
+              name: theName[1]
             });
             i++;
             if (i == length) {
