@@ -16,7 +16,27 @@ block content
         p.muted.quote
           span.pure-hidden-phone #{quote} 
           br
-          | made with love by <a href="http://www.bckmn.com" target="_blank">jbckmn</a>
+          br
+          | made with love by <a href="http://andjosh.com" target="_blank">jbckmn</a>
+    #demo.pure-u-1
+      .pad-s-1
+        br
+        h2.text-center.uppers <a data-scroll-to="lede" class="scroller">AISLIN</a> Demo
+        label 
+          span.muted Input the url of an image <em>(default provided below)</em>
+          input#demo-input(type="url", value="http://#{req.host}/images/cat.jpg")
+        button#demo-button Analyze (ID & Colors)
+        .pure-g-r
+          .pure-u-1-4.pure-hidden-phone
+            p Try:
+              br
+              button(data-demo-url="http://#{req.host}/images/cat.jpg").demo-url Cat
+              br
+              button(data-demo-url="http://#{req.host}/images/fang.jpg").demo-url Fang
+          .pure-u-1-2
+            #demo-resp.text-center
+            #demo-colors.text-center
+            img#demo-image(src="http://#{req.host}/images/favicon.png")
     #docs.pure-u-1
       br
       .pure-hidden-desktop.pure-hidden-tablet.pad-s-1
@@ -84,23 +104,3 @@ block content
                 a(href="/cc?i=http://#{req.host}/images/cat.jpg") /cc?i=http://#{req.host}/images/cat.jpg
               li
                 a(href="/cc?i=http://#{req.host}/images/cat.jpg&colorCount=10") /cc?i=http://#{req.host}/images/cat.jpg&colorCount=10
-    #demo.pure-u-1
-      .pad-s-1
-        br
-        h2.text-center.uppers <a data-scroll-to="lede" class="scroller">AISLIN</a> Demo
-        label 
-          span.muted Input the url of an image <em>(default provided below)</em>
-          input#demo-input(type="url", value="http://#{req.host}/images/cat.jpg")
-        button#demo-button Analyze (ID & Colors)
-        .pure-g-r
-          .pure-u-1-4.pure-hidden-phone
-            p Try:
-              br
-              button(data-demo-url="http://#{req.host}/images/cat.jpg").demo-url Cat
-              br
-              button(data-demo-url="http://#{req.host}/images/fang.jpg").demo-url Fang
-          .pure-u-1-2
-            #demo-resp.text-center
-            #demo-colors.text-center
-            img#demo-image(src="http://#{req.host}/images/favicon.png")
-

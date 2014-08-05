@@ -3,7 +3,8 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , fs = require('fs')
-  , config = JSON.parse(fs.readFileSync('./config.json'));
+  , config = JSON.parse(fs.readFileSync('./config.json'))
+  , cachingMiddleware = require('express-view-cache');
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.logger('dev'));
+app.use(cachingMiddleware(120000,{'type':'application/json','driver':'memjs'}));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);

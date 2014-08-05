@@ -44,6 +44,11 @@ module.exports = function (app, ensureAuth) {
             }
           };
           res.jsonp(response);
+            request('http://www.google-analytics.com/collect?v=1&tid=UA-37125372-12&cid=' + req.ip + '&uip=' + req.ip + '&t=pageview&dp=' + encodeURIComponent(req.path) + '&dh=www.aislin.co&dt=ID&dl=' + encodeURIComponent(req.host + req.originalUrl), function (err, resp, body){
+            if (err){
+              console.log(err);
+            }
+          });
         }
       }
     });
@@ -104,6 +109,11 @@ module.exports = function (app, ensureAuth) {
           }
         };
         res.jsonp(response);
+        request('http://www.google-analytics.com/collect?v=1&tid=UA-37125372-12&cid=' + req.ip + '&uip=' + req.ip + '&t=pageview&dp=' + encodeURIComponent(req.path) + '&dh=www.aislin.co&dt=CC&dl=' + encodeURIComponent(req.host + req.originalUrl), function (err, resp, body){
+          if (err){
+            console.log(err);
+          }
+        });
       }
     });
   });

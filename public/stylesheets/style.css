@@ -34,7 +34,7 @@ code {
   text-transform: uppercase;
 }
 .thin{
-  font-weight: 300;
+  font-weight: 400;
 }
 .text-center{
   text-align: center;
@@ -65,7 +65,7 @@ code {
   margin-bottom: 2em;
 }
 .quote{
-  font-weight: 300;
+  font-weight: 400;
   position: absolute;
   bottom: 0px;
   left:20%;
