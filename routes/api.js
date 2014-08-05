@@ -60,7 +60,7 @@ module.exports = function (app, ensureAuth) {
                 "color count": ("/cc?i=" + req.query.i)
               }
             };
-            redis.setex('id_' + req.query.i, 21600, response);
+            redis.setex('id_' + req.query.i, 21600, JSON.stringify(response));
             res.jsonp(response);
             request('http://www.google-analytics.com/collect?v=1&tid=UA-37125372-12&cid=' + req.ip + '&uip=' + req.ip + '&t=pageview&dp=' + encodeURIComponent(req.path) + '&dh=www.aislin.co&dt=ID&dl=' + encodeURIComponent(req.host + req.originalUrl), function (err, resp, body){
               if (err){
@@ -84,7 +84,7 @@ module.exports = function (app, ensureAuth) {
         runnable();
       }
       else{
-        console.log('cache hit for ', req.query.i, result);
+        console.log('cache hit for ', req.query.i);
         res.jsonp(JSON.parse(result));
       }
     });
@@ -142,7 +142,7 @@ module.exports = function (app, ensureAuth) {
               "identity": ("/id?i=" + req.query.i)
             }
           };
-          redis.setex('cc_' + req.query.i, 21600, response);
+          redis.setex('cc_' + req.query.i, 21600, JSON.stringify(response));
           res.jsonp(response);
           request('http://www.google-analytics.com/collect?v=1&tid=UA-37125372-12&cid=' + req.ip + '&uip=' + req.ip + '&t=pageview&dp=' + encodeURIComponent(req.path) + '&dh=www.aislin.co&dt=CC&dl=' + encodeURIComponent(req.host + req.originalUrl), function (err, resp, body){
             if (err){
