@@ -13,7 +13,8 @@ var fs = require('fs')
     , response
     , Canvas = require('canvas')
     , palette = require('palette');
-
+var redis = require('redis'),
+  client = redis.createClient();
 module.exports = function (app, ensureAuth) {
 
   app.get('/id', function(req, res) {
