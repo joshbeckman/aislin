@@ -19,6 +19,12 @@ var redis = require("redis").createClient(rtg.port, rtg.hostname);
 redis.auth(rtg.auth.split(":")[1]);
 
 module.exports = function (app, ensureAuth) {
+    
+  app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+  });
 
   app.get('/id', function(req, res) {
     if (!req.query.i) {
